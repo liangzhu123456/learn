@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Egret</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <script src='//m.h5mkt.com/2016/common/js/jqueryAndTools.js'></script>
+    <script src="dynamicLoad.js"></script>
+    <style>
+        html, body {
+            -ms-touch-action: none;
+            background: #888888;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+<script>
+        // rem
+        !(function () {
+            function setFontSize() {
+                var _document = document,
+                    _documentElement = _document.documentElement,
+                    html = _document.getElementsByTagName('html')[0],
+                    width = _documentElement && _documentElement.clientWidth && _documentElement.clientWidth ||
+                        window.innerHeight && window.innerHeight ||
+                        _document.body.clientWidth;
+                html.style.fontSize = width / 10 + 'px';
+            }
+            setFontSize();
+            window.addEventListener('resize', function () {
+                setTimeout(function () {
+                    setFontSize()
+                }, 16);
+            });
+        })();
+</script>
+<style>
+    div{
+        width: 100%;
+        height:200px;
+        border: 1px solid black;
+        background-color: red;
+    }
+</style>
+</head>
+
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<span id="J-reserve"></span>
+</body>
+
+</html>
