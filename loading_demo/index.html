@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // rem
+        !(function () {
+            function setFontSize() {
+                var _document = document,
+                    _documentElement = _document.documentElement,
+                    html = _document.getElementsByTagName('html')[0],
+                    width = _documentElement && _documentElement.clientWidth && _documentElement.clientWidth ||
+                        window.innerHeight && window.innerHeight ||
+                        _document.body.clientWidth;
+                html.style.fontSize = width / 10 + 'px';
+            }
+            setFontSize();
+            window.addEventListener('resize', function () {
+                setTimeout(function () {
+                    setFontSize()
+                }, 16);
+            });
+        })();
+    </script>
+    <script src="jqueryAndTools.js"></script>
+    <!-- <script src="//m.h5mkt.com/2016/common/js/muzhiWeixin8.0.js"></script> -->
+    <!--手机打印测试使用-->
+    <!-- <script src="//cdn.bootcss.com/eruda/1.2.4/eruda.min.js "></script>
+    <script>eruda.init();</script> -->
+</head>
+
+<body>
+    <input id="J-file" type="file">
+    <img id="J-img" alt="">
+    <video id="J-video"></video>
+
+    <script>
+/*
+        第一版：
+            实现了利用fileReader对象解析单个文件，在解析完毕后可以进行函数的回调；
+            loadMedia.init(show);
+            file=$('#J-file')[0].files[0];
+            loadMedia.read(file);
+*/  
+        function loadMedia_(){};
+        loadMedia_.prototype = {
+            init: function (callback) {
+                this.fileReader = new FileReader();
+                this.addEvent(callback);
+            },
+            read: function (file) {
+                this.fileReader.readAsDataURL(file);
+            },
+            addEvent: function (callback) {
+                this.fileReader.onload = function (e) {
+                    // console.log(e)
+                    callback(e.target.result)
+                    // $('#J-img').attr('src',e.target.result)
+                }
+            },
+            removeEvent: function () {
+                this.fileReader.onload = null;
+            },
+            destory: function () {
+                this.removeEvent();
+            }
+        }
+        var loadMedia = new loadMedia_();
+        function show(data) {
+            // $('#J-img').attr('src', data)
+            $('#J-video').attr('src',data)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // rem
+        !(function () {
+            function setFontSize() {
+                var _document = document,
+                    _documentElement = _document.documentElement,
+                    html = _document.getElementsByTagName('html')[0],
+                    width = _documentElement && _documentElement.clientWidth && _documentElement.clientWidth ||
+                        window.innerHeight && window.innerHeight ||
+                        _document.body.clientWidth;
+                html.style.fontSize = width / 10 + 'px';
+            }
+            setFontSize();
+            window.addEventListener('resize', function () {
+                setTimeout(function () {
+                    setFontSize()
+                }, 16);
+            });
+        })();
+    </script>
+    <script src="jqueryAndTools.js"></script>
+    <link rel="stylesheet" href="http://m.h5mkt.com/2016/common/css/base.css">
+    <style>
+        .box{
+            font-size: 20px;
+            color:white;
+            background-color: #449df5;
+            overflow: hidden;
+        }
+        .box .span{
+            padding:0 40px 0 40px;
+            line-height: 55px;
+            float: left;
+        }
+        .box .span:first-child{
+            background-color: #328de7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span class="span">首页</span>
+        <span class="span">分类</span>
+        <span class="span">特色百科</span>
+        <span class="span">用户</span>
+        <span class="span">权威合作</span>
+        <span class="span">手机百科</span>
+    </div>
+</body>
+
+</html>

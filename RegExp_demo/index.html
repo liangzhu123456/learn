@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // rem
+        !(function () {
+            function setFontSize() {
+                var _document = document,
+                    _documentElement = _document.documentElement,
+                    html = _document.getElementsByTagName('html')[0],
+                    width = _documentElement && _documentElement.clientWidth && _documentElement.clientWidth ||
+                        window.innerHeight && window.innerHeight ||
+                        _document.body.clientWidth;
+                html.style.fontSize = width / 10 + 'px';
+            }
+            setFontSize();
+            window.addEventListener('resize', function () {
+                setTimeout(function () {
+                    setFontSize()
+                }, 16);
+            });
+        })();
+    </script>
+    <script src="jqueryAndTools.js"></script>
+    <!-- <script src="//m.h5mkt.com/2016/common/js/muzhiWeixin8.0.js"></script> -->
+    <!--手机打印测试使用-->
+    <!-- <script src="//cdn.bootcss.com/eruda/1.2.4/eruda.min.js "></script>
+    <script>eruda.init();</script> -->
+</head>
+
+<body>
+    <input type="text" placeholder="姓名">
+    <input type="text" placeholder="电话">
+    <input type="text" placeholder="邮件">
+    <script>
+    function examination_(para){
+        this.init(para);
+    }
+    examination_.prototype={
+        init:function(para){
+            if(para==undefined){
+                console.warn('未传入参数');
+                return;
+            } 
+            if(Object.prototype.toString.call(para)!='[object Array]'){
+                console.warn('请配置一个数组');
+                return;
+            }
+            // this.option=para;
+            this.RegExp={};
+            for(var i in para){
+                switch (para[i]){
+                    case 'name':
+                        this.RegExp.name=/^([a-zA-Z0-9\u4e00-\u9fa5\·]{1,10})$/;
+                        break;
+                    case 'phone':
+                        this.RegExp.phone=/^(((13|14|15|18|17)\d{9}))$/;
+                        break;
+                }
+            }    
+        },
+        exam:function(para){
+            if(Object.prototype.toString.call(para)!='[object Object]'){
+                console.warn('请传入一个对象')
+                return;
+            }
+            var RegExp=this.RegExp;
+            for(var i in RegExp){
+                console.log(RegExp[i]);
+                if(!RegExp[i].text(para[i])){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    var examination=new examination_(['name','phone']);
+    var flag=examination.exam({name:'1211',phone:11});
+    console.log(flag)
+
+    </script>
+</body>
+
+</html>
