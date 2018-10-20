@@ -1,1 +1,1 @@
-netsh winsock reset 
+柱子
