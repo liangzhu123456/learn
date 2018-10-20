@@ -1,5 +1,4 @@
-<<<<<<< HEAD
+﻿<<<<<<< HEAD
 ﻿柱子
 =======
-﻿
->>>>>>> refs/remotes/origin/master
+
