@@ -1,1 +1,1 @@
-netsh winsock reset 
+netsh winsock zhuzi
